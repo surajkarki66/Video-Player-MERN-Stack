@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
+const checkAuth = require('./middlewares/check-auth');
 const app = express();
 // MongoDB server connection.
 mongoose.connect('mongodb://127.0.0.1:/videoServer', {
@@ -34,6 +35,6 @@ app.use('/api/videos', express.static('media/uploads'));
 // Routes
 app.use('/api/signUp', require('./routes/signUp'));
 app.use('/api/signIn', require('./routes/signIn'));
-app.use('/api/upload', require('./routes/upload'));
+app.use('/api/upload', checkAuth, require('./routes/upload'));
 
 module.exports = app;
