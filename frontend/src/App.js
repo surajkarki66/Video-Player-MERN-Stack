@@ -1,10 +1,11 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <h1>React app is running</h1>
-    </div>
+    <React.Fragment>
+      <h1>Hello</h1>
+    </React.Fragment>
   );
 }
 
