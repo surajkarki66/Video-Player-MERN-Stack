@@ -11,7 +11,7 @@ const signUp = React.memo((props) => {
       lastName: '',
       email: '',
       password: '',
-      redirect: false     //localStorage.getItem('userTokenTime') ? true : false
+      redirect: localStorage.getItem('userTokenTime') ? true : false
     });
 
     const onSubmitHandler = (e) => {
