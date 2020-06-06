@@ -1,10 +1,12 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
+import SignUp from './components/Form/SignUp/SignUp';
+
 function App() {
   return (
     <React.Fragment>
-      <h1>Hello</h1>
+      <Route exact path="/signUp" component={SignUp} />
     </React.Fragment>
   );
 }
