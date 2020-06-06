@@ -30,8 +30,10 @@ app.use(express.json());
 // We will use false only allows simple bodies for urlencoded data
 app.use(express.urlencoded({ extended: false }));
 
+app.use('/api/videos', express.static('media/uploads'));
 // Routes
 app.use('/api/signUp', require('./routes/signUp'));
 app.use('/api/signIn', require('./routes/signIn'));
+app.use('/api/upload', require('./routes/upload'));
 
 module.exports = app;
