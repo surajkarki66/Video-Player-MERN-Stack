@@ -32,9 +32,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/api/videos', express.static('media/uploads'));
+
 // Routes
 app.use('/api/signUp', require('./routes/signUp'));
 app.use('/api/signIn', require('./routes/signIn'));
 app.use('/api/upload', checkAuth, require('./routes/upload'));
+app.use('/api/videoList', checkAuth, require('./routes/videoList'));
 
 module.exports = app;
