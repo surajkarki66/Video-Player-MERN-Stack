@@ -32,5 +32,6 @@ app.use(express.urlencoded({ extended: false }));
 
 // Routes
 app.use('/api/signUp', require('./routes/signUp'));
+app.use('/api/signIn', require('./routes/signIn'));
 
 module.exports = app;
