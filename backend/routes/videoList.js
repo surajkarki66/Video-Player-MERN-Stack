@@ -3,7 +3,7 @@ const router = express.Router();
 
 const VideoDetails = require('../models/VideoDetails');
 
-router.get('/', (req, res, next) => {
+router.get('/', (req, res) => {
     VideoDetails
     .find()
     .exec()

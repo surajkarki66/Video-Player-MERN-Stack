@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const key = require('../configs/default').secret_key;
 
-router.post('/', (req, res, next) => {
+router.post('/', (req, res) => {
   User.find({ email: req.body.email })
     .exec()
     .then(user => {

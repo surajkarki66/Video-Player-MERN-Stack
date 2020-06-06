@@ -21,7 +21,7 @@ const upload = multer({
   },
 });
 
-router.post("/", upload.single("file"), (req, res, next) => {
+router.post("/", upload.single("file"), (req, res) => {
   thumbnailGenerator.generateThumbnail(
     // /api/videos is made publically available in App.js
     "http://127.0.0.1:" +
