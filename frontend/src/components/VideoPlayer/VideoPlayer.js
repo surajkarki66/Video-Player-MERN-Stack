@@ -12,6 +12,7 @@ class VideoPlayer extends React.Component {
     this.state = {
       loaded: false,
       videoJsOptions: null,
+      video: ""
     };
   }
 
@@ -28,6 +29,7 @@ class VideoPlayer extends React.Component {
         // eslint-disable-next-line
         res.data.map((video) => {
           if (video.uploadTitle === this.props.match.params.videoTitle) {
+            this.setState({video:video})
             this.setState(
               {
                 loaded: true,
@@ -70,6 +72,7 @@ class VideoPlayer extends React.Component {
         <Navbar />
         <div className="row" style={{ width: "100vw" }}>
           <div className="col-xs-12 col-sm-12 col-md-10 col-lg-8 mx-auto mt-5">
+          <h3>{this.state.video.uploadTitle}</h3>
             {this.state.loaded ? (
               <div data-vjs-player>
                 <video
@@ -80,6 +83,7 @@ class VideoPlayer extends React.Component {
             ) : (
               " Loading ... "
             )}
+            <h3>Upload By: {this.state.video.uploaderName}</h3>
           </div>
         </div>
       </React.Fragment>

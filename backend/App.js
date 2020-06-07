@@ -31,6 +31,7 @@ app.use(express.json());
 // We will use false only allows simple bodies for urlencoded data
 app.use(express.urlencoded({ extended: false }));
 
+// Making static endpoint
 app.use('/api/videos', express.static('media/uploads'));
 
 // Routes
