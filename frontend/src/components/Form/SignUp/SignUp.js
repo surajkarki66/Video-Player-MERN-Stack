@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios';
 
 import Form from '../Form';
@@ -17,7 +17,7 @@ const signUp = React.memo((props) => {
     const onSubmitHandler = (e) => {
         e.preventDefault();
         if (!(credentials.firstName === '' || credentials.lastName === '' || credentials.email === '' || credentials.password === '')
-          && (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(credentials.email))) {
+          && credentials.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) ) {
           axios.post('http://127.0.0.1:3333/api/signUp', {
             firstName: credentials.firstName,
             lastName: credentials.lastName,

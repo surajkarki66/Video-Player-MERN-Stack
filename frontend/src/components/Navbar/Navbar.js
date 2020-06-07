@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
 const navbar = React.memo(() => {
-  const [loggedIn, setLoggedIn] = useState(null);
+  const [loggedIn] = useState(localStorage.getItem('userTokenTime'));
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-info">
       <div className="container">

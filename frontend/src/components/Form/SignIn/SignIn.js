@@ -15,9 +15,7 @@ const signIn = React.memo(() => {
   const onSubmitHandler = () => {
     if (
       !(credentials.email === "" || credentials.password === "") &&
-      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-        credentials.email
-      )
+      credentials.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)
     ) {
       axios
         .post("http://127.0.0.1:3333/api/signIn", {
@@ -30,7 +28,7 @@ const signIn = React.memo(() => {
             time: new Date().getTime(),
           };
           localStorage.setItem("userTokenTime", JSON.stringify(data));
-          setCredentials(prev => ({ ...prev, redirect: true}));
+          setCredentials((prev) => ({ ...prev, redirect: true }));
         })
         .catch((err) => {
           console.log(err);
@@ -56,7 +54,7 @@ const signIn = React.memo(() => {
           placeholder="example@domain.com"
           onChange={(event) => {
             const newEmail = event.target.value;
-            setCredentials(prev => ({ ...prev, email: newEmail }));
+            setCredentials((prev) => ({ ...prev, email: newEmail }));
           }}
           required
         />
@@ -74,7 +72,7 @@ const signIn = React.memo(() => {
           placeholder="********"
           onChange={(event) => {
             const newPassword = event.target.value;
-            setCredentials(prev => ({ ...prev, password: newPassword }));
+            setCredentials((prev) => ({ ...prev, password: newPassword }));
           }}
           required
         />

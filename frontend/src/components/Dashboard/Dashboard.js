@@ -5,6 +5,7 @@ import axios from "axios";
 import "./Dashboard.css";
 import Navbar from "../Navbar/Navbar";
 
+
 const dashboard = React.memo(() => {
     let shouldRedirect = false;
     if (localStorage.getItem("userTokenTime")) {
@@ -18,7 +19,7 @@ const dashboard = React.memo(() => {
     } else {
         shouldRedirect = true;
     }
-    const [redirect, setRedirect] = useState(shouldRedirect);
+    const [redirect] = useState(shouldRedirect);
     const [videoList, setVideoList] = useState([]);
     useEffect(() => {
         if (localStorage.getItem("userTokenTime")) {
@@ -32,11 +33,10 @@ const dashboard = React.memo(() => {
                     },
                 })
                 .then((res) => {
-                    setVideoList(prev => [...prev, { ...res.data }]);
+                    setVideoList(res.data);
                 });
         }
-    });
-    console.log(videoList)
+    }, []);
     if (redirect) return <Redirect to="/signIn" />;
     const videos = videoList.map((video) => {
 
@@ -45,18 +45,18 @@ const dashboard = React.memo(() => {
                 className="video col-xs-12 col-sm-12 col-md-3 col-lg-4"
                 key={video._id}
             >
-                <Link to={"/video/" + video.upload_title}>
+                <Link to={"/video/" + video.uploadTitle}>
                     <div className="video-thumbnail">
-                        <img src={video.thumbnail_path} alt="video thubmnail" />
+                        <img src={video.thumbnailPath} alt="video thubmnail" />
                     </div>
                 </Link>
                 <span className="username">
-                    <Link to={"/api/videos/" + video.upload_title}>
-                        {video.uploader_name}
+                    <Link to={"/api/videos/" + video.uploadTitle}>
+                        {video.uploaderName}
                     </Link>
                 </span>
                 <span className="video-title">
-                    {video.upload_title.replace(/_/g, " ")}
+                    {video.uploadTitle.replace(/_/g, " ")}
                 </span>
             </div>
         );
