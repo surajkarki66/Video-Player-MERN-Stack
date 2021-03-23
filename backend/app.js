@@ -1,15 +1,15 @@
-const express = require('express');
-const morgan = require('morgan');
-const cors = require('cors');
-const mongoose = require('mongoose');
+const express = require("express");
+const morgan = require("morgan");
+const cors = require("cors");
+const mongoose = require("mongoose");
 
-const checkAuth = require('./middlewares/check-auth');
+const checkAuth = require("./middlewares/check-auth");
 const app = express();
 // MongoDB server connection.
-mongoose.connect('mongodb://127.0.0.1:/videoServer', {
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-    useNewUrlParser: true
+mongoose.connect("mongodb://127.0.0.1:/videoServer", {
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
 });
 mongoose.Promise = global.Promise;
 const connection = mongoose.connection;
@@ -17,9 +17,8 @@ connection.once("open", () => {
   console.log("MongoDB database connection established successfully");
 });
 
-
 // Used to log everything like GET, POST, etc requests
-app.use(morgan('dev'));
+app.use(morgan("dev"));
 // It ensures that we prevent Cross-Origin Resource Sharing(CORS) errors
 // If client made req on localhost:4000, and received res from server which
 // has localhost:3000 req will fail. It is always the case with RESTful APIs
@@ -32,12 +31,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Making static endpoint
-app.use('/api/videos', express.static('media/uploads'));
+app.use("/api/videos", express.static("media/uploads"));
 
 // Routes
-app.use('/api/signUp', require('./routes/signUp'));
-app.use('/api/signIn', require('./routes/signIn'));
-app.use('/api/upload', checkAuth, require('./routes/upload'));
-app.use('/api/videoList', checkAuth, require('./routes/videoList'));
+app.use("/api/signUp", require("./routes/signUp"));
+app.use("/api/signIn", require("./routes/signIn"));
+app.use("/api/upload", checkAuth, require("./routes/upload"));
+app.use("/api/videoList", checkAuth, require("./routes/videoList"));
 
 module.exports = app;

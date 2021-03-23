@@ -1,13 +1,20 @@
 # Video-Player-MERN-Stack
 
-### Here the processs to run an application locally:
+![screenshot_20210323_223029](https://user-images.githubusercontent.com/50628520/112188748-5dcb0280-8c2b-11eb-8966-b82fcf5adde1.png)
 
-   - To start frontend `React` on `Node` server:
-     - `cd frontend`
-     - `npm i`
-     - `npm start`
+![screenshot_20210323_223029](https://user-images.githubusercontent.com/50628520/112188782-67546a80-8c2b-11eb-8db4-a5ab9b97e3a1.png)
 
-   - To start backend `Express` on `Node` server:
-     - `cd backend
-     - `npm i`
-     - `npm start`
+### Here the process to run an application locally:
+
+First you have to install mongodb in system.
+
+- To start frontend local server:
+
+  - `cd frontend`
+  - `npm i`
+  - `npm start`
+
+- To start backend local server:
+  - `cd backend
+  - `npm i`
+  - `npm start`
