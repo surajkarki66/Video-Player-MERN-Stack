@@ -4,17 +4,20 @@
 
 ![screenshot_20210323_225332](https://user-images.githubusercontent.com/50628520/112190267-f01fd600-8c2c-11eb-9245-1b4bf402a281.png)
 
-### Here the process to run an application locally:
+## Installation
 
-First you have to install mongodb in system.
+1. Clone repo
+2. To start frontend `React` on `Node` server:
+     - `cd frontend`
+     - `npm i`
+     - `npm start`
+     
+3. Create Mongo DB Atlas cluster
+   1. Create user and set password and add IP address
+   2. Navigate to app.js replace your new mongoURI with current mongoURI
+   3. Enter replace your password into the new mongoURI
 
-- To start frontend local server:
-
-  - `cd frontend`
-  - `npm i`
-  - `npm start`
-
-- To start backend local server:
-  - `cd backend
-  - `npm i`
-  - `npm start`
+4. To start backend `Express` on `Node` server:
+     - `cd backend
+     - `npm i`
+     - `npm start`
